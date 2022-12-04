@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+require_relative '../config/environment'
+
+def database_init(connection_sym = nil)
+  has_multiple_databases = connection_sym.present?
+  connection_sym ||= Rails.env.to_sym
+
+  loop do
+    begin
+      ActiveRecord::Base.establish_connection(connection_sym).connection
+      break
+    rescue ActiveRecord::NoDatabaseError
+      if has_multiple_databases
+        system("AUTO_ACCEPT=1 rails db:create:#{connection_sym} db:schema:load:#{connection_sym} db:seed")
+      else
+        system("AUTO_ACCEPT=1 rails db:create db:schema:load db:seed")
+      end
+      break
+    rescue ActiveRecord::ConnectionNotEstablished => e
+      puts e
+      puts "Waiting for postgres server to be available"
+      sleep 1
+    end
+  end
+end
+
+database_init()

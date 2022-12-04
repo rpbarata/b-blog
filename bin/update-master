@@ -1,0 +1,9 @@
+#!/bin/sh
+INTIAL_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+echo "=== UPDATING MASTER ==="
+git checkout master
+git pull
+git pull origin staging
+git push
+git checkout $INTIAL_BRANCH

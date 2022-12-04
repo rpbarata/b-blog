@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+# General dependencies #
+apk add --update bash build-base git nano nodejs postgresql-dev yarn
+
+# User setup #
+addgroup -g 1000 -S loop
+adduser -u 1000 -S loop -G loop -s /bin/bash
+
+# Install development dependencies #
+if [ "$RAILS_ENV" = "development" ]; then
+  apk add --update sudo zsh openssh git-crypt
+  echo "loop ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/loop
+  chmod 0440 /etc/sudoers.d/loop
+fi

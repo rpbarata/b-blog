@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+
+echo "=== RUBOCOP ==="
+rubocop --parallel
+
+echo "=== BRAKEMAN ==="
+brakeman -o /dev/stdout --color
+
+echo "=== BUNDLER AUDIT ==="
+bundle-audit update
+bundle-audit
+
+echo "=== YARN AUDIT (disabled until @rails/webpacker gets updated) ==="
+# yarn audit

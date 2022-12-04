@@ -5,8 +5,10 @@ class ApplicationService
   include ActiveModel::AttributeAssignment
 
   # CLASS METHODS #
-  def self.call(attributes = {}, &block)
-    new(attributes).call(&block)
+  class << self
+    def call(attributes = {}, &block)
+      new(attributes).call(&block)
+    end
   end
 
   # INSTANCE METHODS #

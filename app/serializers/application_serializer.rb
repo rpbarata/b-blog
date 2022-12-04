@@ -5,12 +5,14 @@ class ApplicationSerializer
   include ActiveModel::AttributeAssignment
 
   # CLASS METHODS #
-  def self.call(record, attributes = {})
-    new(record, attributes).call
-  end
+  class << self
+    def call(record, attributes = {})
+      new(record, attributes).call
+    end
 
-  def self.multi_call(records, attributes = {})
-    records.collect { |r| new(r, attributes).call }
+    def multi_call(records, attributes = {})
+      records.collect { |r| new(r, attributes).call }
+    end
   end
 
   # INSTANCE METHODS #

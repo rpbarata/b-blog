@@ -67,4 +67,13 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # Logging #
+  config.log_level = ENV["LOG_LEVEL"].downcase.strip.to_sym if ENV["LOG_LEVEL"].present?
+  $stdout.sync = true
+  config.semantic_logger.add_appender(
+    io: $stdout,
+    level: config.log_level,
+    formatter: config.rails_semantic_logger.format
+  )
 end

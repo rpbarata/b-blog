@@ -1,0 +1,8 @@
+#!/bin/sh
+INTIAL_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+echo "=== UPDATING DEVELOPMENT ==="
+git checkout development
+git pull
+git push
+git checkout $INTIAL_BRANCH

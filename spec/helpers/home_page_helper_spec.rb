@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 # Specs in this file have access to a helper object that includes
 # the HomePageHelper. For example:
@@ -10,6 +12,6 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe HomePageHelper, type: :helper do
+RSpec.describe(HomePageHelper) do
   pending "add some examples to (or delete) #{__FILE__}"
 end

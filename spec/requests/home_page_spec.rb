@@ -1,11 +1,12 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe "HomePages", type: :request do
+require "rails_helper"
+
+RSpec.describe("HomePages") do
   describe "GET /index" do
     it "returns http success" do
       get "/home_page/index"
-      expect(response).to have_http_status(:success)
+      expect(response).to(have_http_status(:success))
     end
   end
-
 end

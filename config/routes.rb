@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'home_page/index'
+  get "home_page/index"
   devise_for :users, controllers: {
     registrations: "authors/registrations",
   }

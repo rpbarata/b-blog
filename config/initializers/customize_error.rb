@@ -13,7 +13,7 @@ ActionView::Base.field_error_proc = proc do |html_tag, instance|
 
   elements.each do |e|
     if e.node_name.eql?("label")
-      html = %(#{e}).html_safe
+      html = e.to_s.html_safe
     elsif form_fields.include?(e.node_name)
       e["class"] += " is-invalid"
       html = if instance.error_message.is_a?(Array)

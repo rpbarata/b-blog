@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -26,8 +28,8 @@
 #  index_users_on_type                  (type)
 #  index_users_on_username              (username) UNIQUE
 #
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Author, type: :model do
+RSpec.describe(Author) do
   it_behaves_like "a user"
 end

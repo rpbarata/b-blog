@@ -10,6 +10,6 @@ class Authors::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:type])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:type, :first_name, :last_name, :username])
   end
 end

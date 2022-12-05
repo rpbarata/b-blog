@@ -1,0 +1,15 @@
+<main class="text-center form-auth">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, data: { turbo: false } }) do |f| %>
+    <h1 class="h3 mb-3 fw-normal"><%= t('.forgot_password') %></h1>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="form-floating mb-2">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "floatingEmailInput", placeholder: "Email"%>
+      <%= f.label :email, for: "floatingEmailInput" %>
+    </div>
+
+    <%= f.submit t('.reset_password'), class: "w-100 btn btn-lg btn-primary" %>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</main>

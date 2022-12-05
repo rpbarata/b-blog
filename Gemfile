@@ -16,6 +16,7 @@ gem "turbo-rails"
 gem "redis", "~> 4.0"
 gem "tzinfo-data"
 gem "bootsnap", require: false
+gem "devise"
 
 # ASSETS #
 gem "sprockets-rails"
@@ -34,6 +35,7 @@ group :development, :test do
   gem "rspec"
   gem "rspec-rails"
   gem "rails-controller-testing"
+  gem "faker"
 end
 
 group :development do

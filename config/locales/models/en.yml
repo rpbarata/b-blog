@@ -1,0 +1,30 @@
+en:
+  activerecord:
+    models:
+      user:
+        one: "User"
+        other: "Users"
+      super_admin:
+        one: "Super Admin"
+        other: "Super Admins"
+      admin:
+        one: "Admin"
+        other: "Admins"
+      author:
+        one: "Author"
+        other: "Authors"
+    attributes:
+      user:
+        id: "ID"
+        created_at: "Created at"
+        updated_at: "Updated at"
+        email: "Email"
+        encrypted_password: "Encrypted password"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        first_name: "First name"
+        last_name: "Last name"
+        slug: "Slug"
+        status: "Status"
+        type: "Type"
+        username: "Username"

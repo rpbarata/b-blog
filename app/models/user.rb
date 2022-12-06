@@ -29,7 +29,7 @@
 #  index_users_on_username              (username) UNIQUE
 #
 class User < ApplicationRecord
-  # include SlugConcern
+  include SlugConcern
   include PgSearch::Model
 
   # Include default devise modules. Others available are:
@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  # before_validation -> { set_slug(username) }, only: [:create, :update]
+  before_validation -> { set_slug(username) }, only: [:create, :update]
   before_validation :set_default_avatar, unless: ->() { avatar.attached? }
 
   validates :first_name, :last_name, :status, :type, :username, presence: true

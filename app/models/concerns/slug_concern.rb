@@ -3,9 +3,9 @@
 module SlugConcern
   extend ActiveSupport::Concern
 
-  def to_param
-    slug
-  end
+  # def to_param
+  #   slug
+  # end
 
   def set_slug(attribute)
     if attribute.present?

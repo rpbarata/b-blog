@@ -17,6 +17,8 @@ gem "redis", "~> 4.0"
 gem "tzinfo-data"
 gem "bootsnap", require: false
 gem "devise"
+gem "avo"
+gem 'pg_search'
 
 # ASSETS #
 gem "sprockets-rails"
@@ -24,7 +26,7 @@ gem "jsbundling-rails"
 gem "stimulus-rails"
 gem "cssbundling-rails"
 # gem "sassc-rails"
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 # SECURITY #
 # gem "kredis"

@@ -1,5 +1,5 @@
 <main class="text-center form-auth">
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false }}) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false }}) do |f| %>
     <h1 class="h3 mb-3 fw-normal"><%= t('.log_in') %></h1>
 
     <div class="form-floating mb-2">

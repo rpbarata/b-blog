@@ -29,13 +29,17 @@
 #  index_users_on_username              (username) UNIQUE
 #
 class User < ApplicationRecord
-  include SlugConcern
+  # include SlugConcern
+  include PgSearch::Model
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
-  before_validation -> { set_slug(username) }, only: [:create, :update]
+  has_one_attached :avatar
+
+  # before_validation -> { set_slug(username) }, only: [:create, :update]
+  before_validation :set_default_avatar, unless: ->() { avatar.attached? }
 
   validates :first_name, :last_name, :status, :type, :username, presence: true
   validates :slug, :username, uniqueness: true
@@ -45,6 +49,11 @@ class User < ApplicationRecord
     inactive: 1,
     banned: 2,
   }
+
+  pg_search_scope :pg_search,
+    against: [:id, :email, :first_name, :last_name, :username],
+    using: { tsearch: { prefix: true } },
+    ignoring: :accents
 
   def super_admin?
     type == "SuperAdmin"
@@ -56,5 +65,17 @@ class User < ApplicationRecord
 
   def author?
     type == "Author"
+  end
+
+  private
+
+  def set_default_avatar
+    avatar.attach(
+      io: File.open(
+        Rails.root.join("app/assets/images/fallback/avatar_default.jpg"),
+      ),
+      filename: "avatar_default.jpg",
+      content_type: "image/jpg",
+    )
   end
 end

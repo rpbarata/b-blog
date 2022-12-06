@@ -33,3 +33,8 @@ Author.first_or_create!(
     }
   end,
 )
+
+User.find_each do |user|
+  downloaded_image = URI.parse(Faker::Avatar.image(size: "50x50", format: "jpg")).open
+  user.avatar.attach(io: downloaded_image, filename: "image.png")
+end

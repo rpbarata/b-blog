@@ -29,4 +29,5 @@
 #  index_users_on_username              (username) UNIQUE
 #
 class Author < User
+  has_many :articles, dependent: :nullify
 end

@@ -17,4 +17,6 @@ class SuperAdminResource < Avo::BaseResource
   field :status, as: :select, enum: ::User.statuses
   # field :slug, as: :text
   field :type, as: :select, options: { "Author": "Author", "Admin": "Admin", "Super admin": :SuperAdmin }
+
+  filter UsersStatusFilter
 end

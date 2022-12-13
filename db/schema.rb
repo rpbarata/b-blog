@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_163456) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_12_153044) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +53,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_163456) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "articles", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.string "title", null: false
+    t.datetime "published_date"
+    t.string "slug", null: false
+    t.bigint "author_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_articles_on_author_id"
+    t.index ["category_id"], name: "index_articles_on_category_id"
+    t.index ["slug"], name: "index_articles_on_slug", unique: true
+    t.index ["title"], name: "index_articles_on_title", unique: true
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
     t.string "slug", null: false
@@ -50,6 +75,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_163456) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_categories_on_name", unique: true
     t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.integer "decision"
+    t.bigint "admin_id"
+    t.string "reviewable_type"
+    t.bigint "reviewable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_reviews_on_admin_id"
+    t.index ["decision"], name: "index_reviews_on_decision"
+    t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable"
+    t.index ["reviewable_type"], name: "index_reviews_on_reviewable_type"
+    t.index ["status"], name: "index_reviews_on_status"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,4 +116,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_163456) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "articles", "categories"
 end

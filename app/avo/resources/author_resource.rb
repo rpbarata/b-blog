@@ -19,4 +19,8 @@ class AuthorResource < Avo::BaseResource
   field :status, as: :select, enum: ::User.statuses
   # field :slug, as: :text
   field :type, as: :select, options: { "Author": "Author", "Admin": "Admin", "Super admin": :SuperAdmin }
+
+  field :articles, as: :has_many
+
+  filter UsersStatusFilter
 end

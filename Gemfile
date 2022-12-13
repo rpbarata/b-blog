@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.2"
+ruby "3.0.4"
 gem "rails", "~> 7.0.4"
 
 # GENERAL #
@@ -33,7 +33,8 @@ gem "image_processing", "~> 1.2"
 # gem "bcrypt", "~> 3.1.7"
 
 group :development, :test do
-  gem "debug"
+  # gem "debug"
+  gem "byebug"
   gem "rspec"
   gem "rspec-rails"
   gem "rails-controller-testing"

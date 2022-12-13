@@ -7,4 +7,6 @@ class CategoryResource < Avo::BaseResource
 
   field :id, as: :id
   field :name, as: :text
+
+  field :articles, as: :has_many
 end

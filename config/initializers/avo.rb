@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 # For more information regarding these settings check out our docs https://docs.avohq.io
 Avo.configure do |config|
   ## == Routing ==
-  config.root_path = '/avo'
+  config.root_path = "/avo"
 
   # Where should the user be redirected when visting the `/avo` url
   # config.home_path = nil
 
   ## == Licensing ==
-  config.license = 'community' # change this to 'pro' when you add the license key
+  config.license = "community" # change this to 'pro' when you add the license key
   # config.license_key = ENV['AVO_LICENSE_KEY']
 
   ## == Set the context ==
@@ -102,5 +104,16 @@ Avo.configure do |config|
   # }
   # config.profile_menu = -> {
   #   link "Profile", path: "/avo/profile", icon: "user-circle"
+  # }
+  # config.main_menu = -> {
+  #   section("Users", icon: "heroicons/outline/users") do
+  #     resource(:admin)
+  #     resource(:super_admin)
+  #     resource(:author)
+  #   end
+
+  #   section("Configurations", icon: "heroicons/outline/tag") do
+  #     resource(:category)
+  #   end
   # }
 end

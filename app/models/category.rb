@@ -17,6 +17,8 @@ class Category < ApplicationRecord
   include PgSearch::Model
   include SlugConcern
 
+  has_many :articles
+
   before_validation -> { set_slug(name) }, only: [:create, :update]
 
   validates :name, presence: true, uniqueness: true

@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.2"
+ruby "3.0.4"
 gem "rails", "~> 7.0.4"
 
 # GENERAL #
@@ -17,6 +17,8 @@ gem "redis", "~> 4.0"
 gem "tzinfo-data"
 gem "bootsnap", require: false
 gem "devise"
+gem "avo"
+gem "pg_search"
 
 # ASSETS #
 gem "sprockets-rails"
@@ -24,14 +26,15 @@ gem "jsbundling-rails"
 gem "stimulus-rails"
 gem "cssbundling-rails"
 # gem "sassc-rails"
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 # SECURITY #
 # gem "kredis"
 # gem "bcrypt", "~> 3.1.7"
 
 group :development, :test do
-  gem "debug"
+  # gem "debug"
+  gem "byebug"
   gem "rspec"
   gem "rspec-rails"
   gem "rails-controller-testing"

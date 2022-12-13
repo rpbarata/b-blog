@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AdminResource < Avo::BaseResource
   self.title = :username
   self.includes = []

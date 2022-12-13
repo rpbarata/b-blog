@@ -71,9 +71,7 @@ class User < ApplicationRecord
 
   def set_default_avatar
     avatar.attach(
-      io: File.open(
-        Rails.root.join("app/assets/images/fallback/avatar_default.jpg"),
-      ),
+      io: Rails.root.join("app/assets/images/fallback/avatar_default.jpg").open,
       filename: "avatar_default.jpg",
       content_type: "image/jpg",
     )

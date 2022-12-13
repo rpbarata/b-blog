@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: categories
@@ -13,8 +15,8 @@
 #  index_categories_on_name  (name) UNIQUE
 #  index_categories_on_slug  (slug) UNIQUE
 #
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Category, type: :model do
+RSpec.describe(Category) do
   pending "add some examples to (or delete) #{__FILE__}"
 end

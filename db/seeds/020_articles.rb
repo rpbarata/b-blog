@@ -13,9 +13,9 @@ Article.first_or_create!(
   end,
 )
 
-require 'open-uri'
+require "open-uri"
 Article.find_each do |article|
-  published_date = article.published? ? Faker::Time.between(from: 14.days.ago, to: Time.now) : nil
+  published_date = article.published? ? Faker::Time.between(from: 14.days.ago, to: Time.zone.now) : nil
   downloaded_image = URI.parse(Faker::LoremFlickr.image).open
 
   article.header_image.attach(io: downloaded_image, filename: "image.png")

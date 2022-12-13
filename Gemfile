@@ -18,7 +18,7 @@ gem "tzinfo-data"
 gem "bootsnap", require: false
 gem "devise"
 gem "avo"
-gem 'pg_search'
+gem "pg_search"
 
 # ASSETS #
 gem "sprockets-rails"

@@ -34,7 +34,7 @@ Author.first_or_create!(
   end,
 )
 
-require 'open-uri'
+require "open-uri"
 User.find_each do |user|
   downloaded_image = URI.parse(Faker::Avatar.image(size: "50x50", format: "jpg")).open
   user.avatar.attach(io: downloaded_image, filename: "image.png")

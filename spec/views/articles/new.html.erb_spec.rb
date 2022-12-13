@@ -1,12 +1,14 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe "articles/new", type: :view do
-  before(:each) do
+require "rails_helper"
+
+RSpec.describe("articles/new") do
+  before do
     assign(:article, Article.new(
       status: 1,
       title: "MyString",
       author: nil,
-      category: nil
+      category: nil,
     ))
   end
 
@@ -14,7 +16,6 @@ RSpec.describe "articles/new", type: :view do
     render
 
     assert_select "form[action=?][method=?]", articles_path, "post" do
-
       assert_select "input[name=?]", "article[status]"
 
       assert_select "input[name=?]", "article[title]"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: reviews
@@ -19,8 +21,8 @@
 #  index_reviews_on_reviewable_type  (reviewable_type)
 #  index_reviews_on_status           (status)
 #
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Review, type: :model do
+RSpec.describe(Review) do
   pending "add some examples to (or delete) #{__FILE__}"
 end

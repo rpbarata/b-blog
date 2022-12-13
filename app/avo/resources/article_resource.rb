@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArticleResource < Avo::BaseResource
   self.title = :title
   self.includes = []
@@ -11,7 +13,7 @@ class ArticleResource < Avo::BaseResource
   field :header_image, as: :file, is_image: true, accept: "image/*"
   field :published_date, as: :date_time, time_24hr: true
   field :body, as: :trix
-  
+
   field :author, as: :belongs_to
   field :category, as: :belongs_to
   field :reviews, as: :has_many, polymorphic_as: :reviewable
